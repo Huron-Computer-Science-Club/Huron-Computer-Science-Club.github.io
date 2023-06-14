@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
-<header>
-    <title>Huron Computer Science Club</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-</header>
+<head>
+    <script src="/jquery-3.7.0.min.js"></script>
+    <script> 
+        $(function(){
+            $("#header").load("/header.html"); 
+        });
+    </script> 
+</head>
 <body>
-
+    <div id="header"></div>
     <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 </body>
 </html>
