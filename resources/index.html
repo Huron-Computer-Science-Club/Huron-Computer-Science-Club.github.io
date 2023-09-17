@@ -11,11 +11,50 @@
 <body>
     <div id="header"></div>
     <h1>Important Links</h1>
+    <h2>Past Weeks Presentations</h2>
+    <ul id="presentation-list">
+
+    </ul>
     <ul>
         <li><a href="https://p5js.org/">p5.js</a></li>
         <li><a href="https://jquery.com/">jquery</a></li>
         <li><a href="https://www.python.org/">Python</a></li>
         <li>Add more links to like programming learning websites, common libraries and languages and downloads and stuff</li> 
     </ul>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the <ul> element where links will be inserted
+            const linkList = document.getElementById("presentation-list");
+
+    // Fetch the .txt file containing links
+            fetch('past-presentations.txt')
+                .then(response => response.text())
+                .then(data => {
+            // Split the text file into an array of links (assuming one link per line)
+                    const linksArray = data.split('\n');
+
+            // Create list items and anchor tags for each link
+                    linksArray.forEach(link => {
+                        if (link.trim() !== '') { // Check if the link is not empty
+                            a_text = link.split(": ")[0]
+                            a_link = link.split(": ")[1]
+                            console.log(a_link)
+                            const listItem = document.createElement('li');
+                            const anchor = document.createElement('a');
+        
+                            anchor.href = a_link;
+                            anchor.textContent = a_text;
+
+                            listItem.appendChild(anchor);
+                            linkList.appendChild(listItem);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching and processing the file:', error);
+                });
+        });
+
+    </script>
 </body>
 </html>
